@@ -1,86 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine 💘</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Segoe UI', sans-serif;
-        }
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
 
-        .card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 18px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            width: 90%;
-            max-width: 350px;
-        }
+    .card {
+        background: white;
+        padding: 28px 22px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        width: 90%;
+        max-width: 360px;
+    }
 
-        h2 {
-            color: #e91e63;
-            margin-bottom: 25px;
-        }
+    h2 {
+        color: #e91e63;
+        margin-bottom: 10px;
+    }
 
-        .buttons {
-            position: relative;
-            height: 60px;
-        }
+    .excuse {
+        font-size: 14px;
+        color: #555;
+        min-height: 40px;
+        margin-bottom: 10px;
+    }
 
-        button {
-            padding: 10px 22px;
-            border-radius: 20px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    .buttons {
+        position: relative;
+        height: 120px;
+        margin-top: 10px;
+    }
 
-        #yes {
-            background: #e91e63;
-            color: white;
-        }
+    button {
+        padding: 10px 22px;
+        border-radius: 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-        #no {
-            background: #ccc;
-            position: absolute;
-            left: 120px;
-        }
-    </style>
+    #yes {
+        background: #e91e63;
+        color: white;
+    }
+
+    #no {
+        background: #ccc;
+        position: absolute;
+        left: 120px;
+        top: 60px;
+    }
+</style>
 </head>
 <body>
 
 <div class="card">
-    <h2>Will you be my valentine Titli 🦋</h2>
+    <h2>Will you be my Valentine<br>Priyanka (Titli 🦋)</h2>
+
+    <div class="excuse" id="excuse">
+        सोच लो… इतनी जल्दी “No” मत बोलो 😌
+    </div>
 
     <div class="buttons">
         <button id="yes" onclick="yesClick()">Yes ❤️</button>
-        <button id="no" onmouseover="moveNo()">No 😅</button>
+        <button id="no" ontouchstart="moveNo()" onmouseover="moveNo()">No 😅</button>
     </div>
 </div>
 
 <script>
+    const excuses = [
+        "अरे रुको ना… इतनी प्यारी हो तो Yes ही सूट करता है 😌",
+        "No बोलने से पहले मुस्कुरा लो… अब Yes ही निकलेगा 😄",
+        "इतनी आसानी से No? दिल नहीं मान रहा 💓",
+        "Titli 🦋 No नहीं उड़ती… वो Yes पर बैठती है 😉",
+        "एक बार Yes बोल के देखो… फिर आदत हो जाएगी 😏",
+        "चांद भी शर्मा जाए अगर तुम No बोल दो 🌙"
+    ];
+
     function moveNo() {
         const btn = document.getElementById("no");
-        const x = Math.random() * 200 - 100;
-        const y = Math.random() * 50 - 25;
-        btn.style.transform = `translate(${x}px, ${y}px)`;
+        const parent = btn.parentElement;
+        const excuseBox = document.getElementById("excuse");
+
+        const maxX = parent.offsetWidth - btn.offsetWidth;
+        const maxY = parent.offsetHeight - btn.offsetHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+
+        const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+        excuseBox.innerText = randomExcuse;
     }
 
     function yesClick() {
         document.body.innerHTML = `
-            <h1 style="color:white;text-align:center;">
-                Yayyy 🥰<br>
-                You just made my Valentine special 💖
-            </h1>
+            <div style="color:white; text-align:center; padding:20px;">
+                <h1>🎉 Congratulations 💖</h1>
+                <h2>You are my Valentine 🥰</h2>
+
+                <p style="font-size:18px; margin-top:20px; line-height:1.6;">
+                    लोग बचते हैं समंदर से,<br>
+                    लेकिन हम तुम्हारी आंखों में डूबने को तैयार हैं।<br><br>
+
+                    किसको देखने की चाहत करें?<br>
+                    तुमको देख लिया है, एक बार।<br><br>
+
+                    तुम्हारी जुल्फों की गहराई है बहुत<br>
+                    और हमको पसंद नहीं आता है किनारा।
+                </p>
+            </div>
         `;
     }
 </script>
