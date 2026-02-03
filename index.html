@@ -99,14 +99,11 @@
         const maxX = parent.offsetWidth - btn.offsetWidth;
         const maxY = parent.offsetHeight - btn.offsetHeight;
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+        btn.style.left = Math.random() * maxX + "px";
+        btn.style.top  = Math.random() * maxY + "px";
 
-        btn.style.left = x + "px";
-        btn.style.top = y + "px";
-
-        const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
-        excuseBox.innerText = randomExcuse;
+        excuseBox.innerText =
+            excuses[Math.floor(Math.random() * excuses.length)];
     }
 
     function yesClick() {
@@ -115,7 +112,7 @@
                 <h1>🎉 Congratulations 💖</h1>
                 <h2>You are my Valentine 🥰</h2>
 
-                <p style="font-size:18px; margin-top:20px; line-height:1.6;">
+                <p style="font-size:18px; margin-top:20px; line-height:1.7;">
                     लोग बचते हैं समंदर से,<br>
                     लेकिन हम तुम्हारी आंखों में डूबने को तैयार हैं।<br><br>
 
@@ -123,7 +120,10 @@
                     तुमको देख लिया है, एक बार।<br><br>
 
                     तुम्हारी जुल्फों की गहराई है बहुत<br>
-                    और हमको पसंद नहीं आता है किनारा।
+                    और हमको पसंद नहीं आता है किनारा।<br><br>
+
+                    लोग कहते हैं चांद का टुकड़ा हो तुम,<br>
+                    हम कहते हैं चांद टुकड़ा है तुम्हारा। 🌙✨
                 </p>
             </div>
         `;
